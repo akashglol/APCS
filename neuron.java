@@ -16,7 +16,7 @@ How it Works:
         }
         bias = Math.random();
     }
-    public double output(double[] inputs) {
+    public double neuronOutput(double[] inputs) {
 /*Transforms input to a value between 0 and 1, which is useful for binary
 classification*/
         double sum = 0.0;;

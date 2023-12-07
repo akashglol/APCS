@@ -7,6 +7,10 @@ public class layer {
      * 2. Create new Neuron objects for each element inside the neurons array.
      * */
     public layer(int neuronCount, int inputCount) {
+        neurons = new neuron[neuronCount];
+        for( int i = 0;i<neuronCount;i++){
+            neurons[i] = new neuron(inputCount);
+        }
     }
     /*calculate output of neuron based on inputs
      * 1. Initialize outputs array with of a size of the length of the neurons array
@@ -14,6 +18,10 @@ public class layer {
      * 3. Returns the output as a double array.
      * */
     public double[] output(double[] inputs) {
-        return inputs;
+        double[] outputs = new double[neurons.length];
+        for( int i = 0;i<outputs.length;i++){
+            outputs[i] = neurons[i].neuronOutput(inputs);
+        }
+        return outputs;
     }
 }
