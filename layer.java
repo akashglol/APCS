@@ -19,7 +19,8 @@ public class layer {
      * */
     public double[] output(double[] inputs) {
         double[] outputs = new double[neurons.length];
-        for( int i = 0;i<outputs.length;i++){
+
+        for (int i = 0; i < neurons.length; i++) {
             outputs[i] = neurons[i].neuronOutput(inputs);
         }
         return outputs;

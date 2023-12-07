@@ -12,7 +12,7 @@ How it Works:
     public neuron(int inputs){
         weights = new double[inputs];
         for( int i = 0;i<weights.length;i++){
-            weights[i] = (double)Math.random();
+            weights[i] = Math.random();
         }
         bias = Math.random();
     }
