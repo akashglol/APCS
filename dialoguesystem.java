@@ -1,3 +1,4 @@
+import java.util.*;
 public class dialoguesystem {
     /*Simple application of neural networks to demonstrate basic dialogue system*/
     public static void main(String[] args) {
@@ -10,6 +11,18 @@ a. Encodes user input and saves encoded array
 b. Saves neural network output as 'intent' array
 c. Calls generateResponse() to get a String response and prints it out.
 */
+        int inputSize = 5;
+        int[] layerSizes = {10,8,5};
+        network neuralNetwork = new network(inputSize,layerSizes);
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter your input");
+        String text = scan.next();
+
+        double[] encode = encodeUserInput(text); // encode
+        double[] ans = neuralNetwork.output(encode); // save
+        String response = generateResponse(ans);
+        System.out.println(response);
+        scan.close();
     }
     /*Encodes user input into suitable format for neural network (no implementation
     required)*/
@@ -24,7 +37,22 @@ c. Calls generateResponse() to get a String response and prints it out.
     to choose from as an output to return
     based on the highest index.*/
     private static String generateResponse(double[] intent) {
-        return null;
+        String[] responses = {"hi, how are you doing?", "bye, it was nice talking to you!", "hello, nice to mee you?", "goodbye, it was fun meeting you!"};
+        int maxI = 0;
+        double maxValue = intent[0];
+        for( int i = 1;i<intent.length;i++){
+            if (intent[i] > maxValue) {
+                maxI = i;
+                maxValue = intent[i];
+            }
+        }
+        String ans = "";
+        if( maxI >=0 && maxI < responses.length){
+            ans = responses[maxI];
+            return ans;
+        }else {
+            return "Thanks";
+        }
     }
 }
 

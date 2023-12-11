@@ -18,6 +18,16 @@ public class network {
     current layer size and 'prevLayerSize'.
     */
     public network(int inputSize, int[] layerSizes) {
+        layers = new layer[layerSizes.length];
+        for( int i = 0;i<layers.length;i++) {
+            int prevLayerSize = 0;
+            if (i == 0) {
+                prevLayerSize = inputSize;
+            }else{
+                prevLayerSize = layerSizes[i-1];
+            }
+            layers[i] = new layer(layerSizes[i], prevLayerSize);
+        }
     }
     /*calculates output of network
     * 1. Create array that stores the double[] inputs array
@@ -26,7 +36,12 @@ public class network {
     * current layer on each respective input value.
     * 3. Return the array */
     public double[] output(double[] inputs) {
-        return inputs;
+        double[] ans = new double[layers.length];
+        for( int i = 0;i< ans.length;i++){
+            ans = layers[i].output(inputs);
+            inputs = ans;
+        }
+        return ans;
     }
 }
 
