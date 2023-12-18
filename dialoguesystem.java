@@ -11,7 +11,7 @@ a. Encodes user input and saves encoded array
 b. Saves neural network output as 'intent' array
 c. Calls generateResponse() to get a String response and prints it out.
 */
-        int inputSize = 5;
+        int inputSize = 10;
         int[] layerSizes = {10,8,5};
         network neuralNetwork = new network(inputSize,layerSizes);
         Scanner scan = new Scanner(System.in);
@@ -28,6 +28,9 @@ c. Calls generateResponse() to get a String response and prints it out.
     required)*/
     private static double[] encodeUserInput(String input) {
         double[] encoded = new double[10];
+        for( int i = 0;i< encoded.length;i++){
+            encoded[i] =Math.random();
+        }
         return encoded;
     }
     /*Generates response based on neural network's output
@@ -37,7 +40,7 @@ c. Calls generateResponse() to get a String response and prints it out.
     to choose from as an output to return
     based on the highest index.*/
     private static String generateResponse(double[] intent) {
-        String[] responses = {"hi, how are you doing?", "bye, it was nice talking to you!", "hello, nice to mee you?", "goodbye, it was fun meeting you!"};
+        String[] responses = {"hi, how are you doing?", "bye, it was nice talking to you!", "What do you mean", "I hear you"};
         int maxI = 0;
         double maxValue = intent[0];
         for( int i = 1;i<intent.length;i++){

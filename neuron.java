@@ -1,9 +1,7 @@
 public class neuron {
     /*Represents single neuron in neural network*/
-    private double[] weights;
-    private double bias;
-    /*Constructor to initialize neuron with specific number of inputs*/
-/*Purpose: Constructor initialize neuron with specific number of inputs.
+    private double[] weights; private double bias;
+    /*Constructor to initialize neuron with specific number of inputs*/ /*Purpose: Constructor initialize neuron with specific number of inputs.
 How it Works:
 1. Creates an array of weights, one for each input.
 2. Initializes each weight with a random value.
@@ -17,8 +15,9 @@ How it Works:
         bias = Math.random();
     }
     public double neuronOutput(double[] inputs) {
-/*Transforms input to a value between 0 and 1, which is useful for binary
-classification*/
+/*Transforms input to a value between 0 and 1, which is useful for binary classification*/
+        //System.out.print(inputs.length);
+     //   System.out.print(weights.length);
         double sum = 0.0;;
         for( int i = 0; i<inputs.length;i++){
             sum+= inputs[i] * weights[i];
@@ -26,10 +25,8 @@ classification*/
         sum+=bias;
         return sigmoid(sum);
     }
-
     private double sigmoid(double x) {
         double ans = 1/(1+Math.exp(-x));
         return ans;
     }
 }
-//hi
